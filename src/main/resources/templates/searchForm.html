@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms Project</title>
+  <script th:src="@{/uswds/dist/js/uswds-init.min.js}"></script>
+  <link rel="stylesheet" th:href="@{/uswds/dist/css/uswds.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+
+
+<body>
+  <script th:src="@{/uswds/dist/js/uswds.min.js}"></script>
+  <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+  <header class="usa-header usa-header--basic">
+    <div class="usa-nav-container">
+      <div class="usa-navbar">
+        <div class="usa-logo">
+          <em class="usa-logo__text"><a href="/" title="Form Project">Forms Project</a></em>
+        </div>
+        <button type="button" class="usa-menu-btn">Menu</button>
+      </div>
+
+      <nav aria-label="Primary navigation," class="usa-nav">
+
+        <ul class="usa-nav__primary usa-accordion">
+          <li class="usa-nav__primary-item"><a href="/" class="usa-nav-link"><span>Home</span></a></li>
+          <li class="usa-nav__primary-item"><a href="/search" class="usa-nav-link usa-current"><span>Search</span></a>
+          </li>
+        </ul>
+
+        <section aria-label="Search component">
+          <form class="usa-search usa-search--small" role="search">
+            <label class="usa-sr-only" for="search-field">Search</label>
+            <input class="usa-input" id="search-field" type="search" name="search" />
+            <button class="usa-button" type="submit">
+              <img th:src="@{/uswds/dist/img/usa-icons-bg/search--white.svg}" class="usa-search__submit-icon"
+                alt="Search" />
+            </button>
+          </form>
+        </section>
+
+      </nav>
+
+    </div>
+  </header>
+
+  <div class="usa-section">
+    <div class="grid-container">
+      <div class="grid-row grid-gap">
+        <!-- Side Nav -->
+        <div class="display-none desktop:display-block desktop:grid-col-3 margin-bottom-4 tablet:margin-bottom-0">
+          <nav aria-label="Side navigation,">
+            <ul class="usa-sidenav">
+              <li class="usa-sidenav__item"><a href="/">Home</a></li>
+              <li class="usa-sidenav__item"><a href="/search" class="usa-current">Search</a></li>
+            </ul>
+          </nav>
+        </div>
+        <!-- Page Body -->
+        <main class="desktop:grid-col-9 usa-prose" id="main-content">
+
+          <form method="GET" action="/processSearch" th:object="${searchForm}" class="usa-form usa-form--large">
+            <fieldset class="usa-fieldset">
+              <legend class="usa-legend usa-legend--large">Search</legend>
+              <p>
+                Required fields are marked with an asterisk (<abbr title="required"
+                  class="usa-hint usa-hint--required">*</abbr>).
+              </p>
+              <!-- accountName -->
+              <label class="usa-label" for="state">Account</label>
+              <select class="usa-select" id="state" th:field="*{accountName}">
+                <option th:each="account : ${accounts}" th:value="${account.id}" th:text="${account.name}" />
+              </select>
+              <!-- payee -->
+              <label class="usa-label" for="payee">Payee</label>
+              <div class="usa-combo-box" th:attr="data-default-value=*{payee}">
+                <select class="usa-select" name="payee" id="payee" th:field="*{payee}">
+                  <option th:each="payee : ${payees}" th:value="${payee.id}" th:text="${payee.name}" />
+                </select>
+              </div>
+              <!-- startDate -->
+              <label class="usa-label" id="event-date-start-label" for="event-date-start">Start date<abbr
+                  title="required" class="usa-hint usa-hint--required">*</abbr></label>
+              <div class="usa-hint" id="event-date-start-hint">mm/dd/yyyy</div>
+              <div class="usa-date-picker" th:attr="data-default-value=*{startDateDefaultValue}">
+                <input class="usa-input" id="event-date-start" name="startDate" aria-labelledby="event-date-start-label"
+                  aria-describedby="event-date-start-hint" />
+              </div>
+              <!-- startDate Error -->
+              <div class="usa-alert usa-alert--error usa-alert--slim" th:if="${#fields.hasErrors('startDate')}">
+                <div class="usa-alert__body">
+                  <p class="usa-alert__text" th:errors="*{endDate}">Name Error Here</p>
+                </div>
+              </div>
+              <!-- endDate -->
+              <label class="usa-label" id="event-date-end-label" for="event-date-end">End date<abbr title="required"
+                  class="usa-hint usa-hint--required">*</abbr></label>
+              <div class="usa-hint" id="event-date-end-hint">mm/dd/yyyy</div>
+              <div class="usa-date-picker" th:attr="data-default-value=*{endDateDefaultValue}">
+                <input class="usa-input" id="event-date-end" th:field="*{endDate}"
+                  aria-labelledby="event-date-end-label" aria-describedby="event-date-end-hint" />
+              </div>
+              <!-- endDate Error -->
+              <div class="usa-alert usa-alert--error usa-alert--slim" th:if="${#fields.hasErrors('endDate')}">
+                <div class="usa-alert__body">
+                  <p class="usa-alert__text" th:errors="*{endDate}">Name Error Here</p>
+                </div>
+              </div>
+              <!-- Search Button -->
+              <input class="usa-button" type="submit" value="Search" />
+            </fieldset>
+          </form>
+
+        </main>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
