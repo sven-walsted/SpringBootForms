@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 public class DateByStringConverter implements Converter<String, Date> {
 
   @Override
-  public Date convert(String dateString) {
+  public Date convert(@NonNull String dateString) {
     Date date;
     if (dateString == null || "".equals(dateString.trim())) {
       date = null;

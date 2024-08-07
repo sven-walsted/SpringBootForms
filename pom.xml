@@ -11,7 +11,7 @@
     </parent>
     <groupId>com.sven-walsted.spring.boot.mvc</groupId>
     <artifactId>forms</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>forms</name>
     <description>Demo project for Spring Boot using MVC</description>
