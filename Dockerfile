@@ -8,5 +8,5 @@ MAINTAINER    Sven Walsted "swalsted@gmail.com"
 #######################################################################################################
 RUN           apt update
 RUN           apt install openjdk-19-jre-headless -y
-COPY          target/forms-0.0.2-SNAPSHOT.war /tmp
-CMD           java -jar /tmp/forms-0.0.2-SNAPSHOT.war
+COPY          target/forms-0.1.0-SNAPSHOT.war /tmp
+CMD           java -jar /tmp/forms-0.1.0-SNAPSHOT.war

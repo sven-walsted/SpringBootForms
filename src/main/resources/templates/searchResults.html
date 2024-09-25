@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms Project</title>
+  <script th:src="@{/uswds/dist/js/uswds-init.min.js}"></script>
+  <link rel="stylesheet" th:href="@{/uswds/dist/css/uswds.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+
+
+<body>
+  <script th:src="@{/uswds/dist/js/uswds.min.js}"></script>
+  <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+  <header class="usa-header usa-header--basic">
+    <div class="usa-nav-container">
+      <div class="usa-navbar">
+        <div class="usa-logo">
+          <em class="usa-logo__text"><a href="/" title="Form Project">Forms Project</a></em>
+        </div>
+        <button type="button" class="usa-menu-btn">Menu</button>
+      </div>
+
+      <nav aria-label="Primary navigation," class="usa-nav">
+
+        <ul class="usa-nav__primary usa-accordion">
+          <li class="usa-nav__primary-item"><a href="/" class="usa-nav-link"><span>Home</span></a></li>
+          <li class="usa-nav__primary-item"><a href="/search" class="usa-nav-link usa-current"><span>Search</span></a>
+          </li>
+        </ul>
+
+        <section aria-label="Search component">
+          <form class="usa-search usa-search--small" role="search">
+            <label class="usa-sr-only" for="search-field">Search</label>
+            <input class="usa-input" id="search-field" type="search" name="search" />
+            <button class="usa-button" type="submit">
+              <img th:src="@{/uswds/dist/img/usa-icons-bg/search--white.svg}" class="usa-search__submit-icon"
+                alt="Search" />
+            </button>
+          </form>
+        </section>
+
+      </nav>
+
+    </div>
+  </header>
+
+  <div class="usa-section">
+    <div class="grid-container">
+      <div class="grid-row grid-gap">
+        <!-- Side Nav -->
+        <div class="display-none desktop:display-block desktop:grid-col-3 margin-bottom-4 tablet:margin-bottom-0">
+          <nav aria-label="Side navigation,">
+            <ul class="usa-sidenav">
+              <li class="usa-sidenav__item"><a href="/">Home</a></li>
+              <li class="usa-sidenav__item"><a href="/search" class="usa-current">Search</a></li>
+            </ul>
+          </nav>
+        </div>
+        <!-- Page Body -->
+        <main class="desktop:grid-col-9 usa-prose" id="main-content">
+
+          <table
+            class="usa-table usa-table--striped usa-table--sticky-header">
+            <caption>Results for: [put query here]</caption>
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Inventory ID</th>
+                <th scope="col">Model</th>
+                <th scope="col">Serial No</th>
+                <th scope="col">User</th>
+                <th scope="col">Last Seen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="document,iterStat : ${documents}">
+                <th scope="row"><span class="pointer"
+                  onclick="showForm();"
+                  th:text="${document.id}">ID...</span></th>
+                <td><span class="pointer" onclick="showForm();"
+                  th:text="${document.computerName}">Computer Name...</span></td>
+                <td><span class="pointer" onclick="showForm();"
+                  th:text="${document.inventoryId}">Inventory ID</span></td>
+                <td><span class="pointer" onclick="showForm();"
+                  th:text="${document.computerModel}">Computer Model</span></td>
+                <td><span class="pointer" onclick="showForm();"
+                  th:text="${document.computerSerialNo}">Computer Serial No</span></td>
+                <td><span class="pointer" onclick="showForm();"
+                  th:text="${document.userName}">User</span></td>
+                <td><span class="pointer" onclick="showForm();"
+                  th:text="${document.lastSeenDate}">Last Seen</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </main>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

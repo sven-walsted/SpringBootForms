@@ -8,9 +8,7 @@ import lombok.Data;
 @Data
 public class SearchForm {
 
-  private String accountName;
-
-  private String payee;
+  private String computerModel;
 
   @NotNull(message = "Required")
   private Date startDate;

@@ -72,17 +72,10 @@
                   class="usa-hint usa-hint--required">*</abbr>).
               </p>
               <!-- accountName -->
-              <label class="usa-label" for="state">Account</label>
-              <select class="usa-select" id="state" th:field="*{accountName}">
-                <option th:each="account : ${accounts}" th:value="${account.id}" th:text="${account.name}" />
+              <label class="usa-label" for="state">Model</label>
+              <select class="usa-select" id="state" th:field="*{computerModel}">
+                <option th:each="computerModel : ${computerModels}" th:value="${computerModel}" th:text="${computerModel}" />
               </select>
-              <!-- payee -->
-              <label class="usa-label" for="payee">Payee</label>
-              <div class="usa-combo-box" th:attr="data-default-value=*{payee}">
-                <select class="usa-select" name="payee" id="payee" th:field="*{payee}">
-                  <option th:each="payee : ${payees}" th:value="${payee.id}" th:text="${payee.name}" />
-                </select>
-              </div>
               <!-- startDate -->
               <label class="usa-label" id="event-date-start-label" for="event-date-start">Start date<abbr
                   title="required" class="usa-hint usa-hint--required">*</abbr></label>
