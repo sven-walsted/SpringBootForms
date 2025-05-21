@@ -12,4 +12,4 @@ Demo project for Spring Boot using MVC and Data.
 
 **Additional Functionality**
 - This version implements a Spring-base method to upload files.
--Manually enter URL: uploadForm/
+- Manually enter URL: uploadForm/
