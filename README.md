@@ -9,3 +9,7 @@ Demo project for Spring Boot using MVC and Data.
 
 **Starting Application**
 - ./mvnw spring-boot:run
+
+**Additional Functionality**
+- This version implements a Spring-base method to upload files.
+-Manually enter URL: uploadForm/
